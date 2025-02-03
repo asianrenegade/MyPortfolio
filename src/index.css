@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.bg-hi {
+  background: linear-gradient(120deg, #faf6f1 0%, #f5f0e8 100%);
+}
+
+.text-teal {
+  color: #264e4e;
+}
+
+.case-study-card {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.case-study-card:hover {
+  transform: scale(0.98);
+}
+
+.case-study-image {
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.case-study-card:hover .case-study-image {
+  transform: scale(1.03);
+}
+
+.case-study-title {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.case-study-card:hover .case-study-title {
+  transform: translateY(-4px);
+}
+
+.case-study-icon {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.case-study-card:hover .case-study-icon {
+  transform: translateX(4px) rotate(-45deg);
+}
