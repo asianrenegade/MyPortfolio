@@ -1,0 +1,98 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+const CaseStudy = ({ title, role, company, bgColor = 'bg-slate-50' }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <motion.div
+      className={`${bgColor} rounded-3xl p-12 cursor-pointer transition-all duration-500`}
+      whileHover={{ scale: 1.02 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <div className="relative w-full aspect-video bg-white rounded-xl mb-8">
+        <img 
+          src="/api/placeholder/800/450" 
+          alt="Project preview"
+          className="w-full h-full object-cover rounded-xl"
+        />
+      </div>
+      
+      <h3 className="text-3xl text-gray-800 mb-3">{title}</h3>
+      <div className="flex items-center justify-between">
+        <span className="text-gray-500">{role}</span>
+        <motion.span 
+          className="text-gray-800"
+          animate={{ x: isHovered ? 10 : 0 }}
+        >
+          {company} →
+        </motion.span>
+      </div>
+    </motion.div>
+  );
+};
+
+const PortfolioLanding = () => {
+  return (
+    <div className="min-h-screen bg-white p-8 md:p-16">
+      {/* Navigation */}
+      <nav className="flex justify-between items-center mb-32">
+        <span className="text-xl text-gray-800">Your Name</span>
+        <div className="space-x-8">
+          <a href="#work" className="text-gray-600 hover:text-gray-900">Work</a>
+          <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
+          <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <div className="max-w-4xl mb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-6"
+        >
+          <div className="text-5xl md:text-7xl font-light text-gray-900 leading-tight">
+            <motion.div
+              animate={{ rotate: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }}
+              className="inline-block text-yellow-400 mb-4"
+            >
+              👋
+            </motion.div>
+            <h1>Hey, I'm <br />a UX designer</h1>
+          </div>
+          <p className="text-xl text-gray-500">
+            Creating meaningful digital experiences through thoughtful design
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Case Studies Grid */}
+      <div className="grid grid-cols-1 gap-8">
+        <CaseStudy 
+          title="Refreshing a Global Brand"
+          role="Lead Designer"
+          company="Project One"
+          bgColor="bg-blue-50"
+        />
+        <CaseStudy 
+          title="Reimagining User Experience"
+          role="UX Designer"
+          company="Project Two"
+          bgColor="bg-green-50"
+        />
+        <CaseStudy 
+          title="Digital Transformation"
+          role="Product Designer"
+          company="Project Three"
+          bgColor="bg-orange-50"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default PortfolioLanding;
